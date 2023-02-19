@@ -23,9 +23,29 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "htmlacademy/react-typescript"
+    ],
+    "parserOptions": {
+      "project": [
+        "tsconfig.json"
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "*test*"
+        ],
+        "rules": {
+          "@typescript-eslint/unbound-method": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +59,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-htmlacademy": "^9.0.0"
   }
 }
