@@ -1,0 +1,15 @@
+.wrapper {
+  width: 320px;
+  overflow: hidden;
+}
+
+.previewImage {
+  display: block;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.cardContent {
+  background-color: #1e1e1e;
+  height: 106px;
+}
