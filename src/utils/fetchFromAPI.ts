@@ -1,4 +1,4 @@
-import { RootObject } from './../types/types';
+import { SuggestedItems } from '../types/suggested-items';
 import axios from 'axios';
 
 const BASE_URL = 'https://youtube-v31.p.rapidapi.com';
@@ -14,7 +14,7 @@ const options = {
 };
 
 export const fetchFromAPI = async (url: string) => {
-  const {data} = await axios.get<RootObject>(`${BASE_URL}/${url}`, options);
+  const {data} = await axios.get<SuggestedItems>(`${BASE_URL}/${url}`, options);
 
   return data;
 };

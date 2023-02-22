@@ -1,20 +1,23 @@
-import {Item} from '../../types/types';
+import { Channel } from '../../types/channel';
+import { Video } from '../../types/video';
 import ChannelCard from '../channel-card/channel-card';
 import VideoCard from '../video-card/video-card';
 import styles from './videos.module.css';
 
 type PropsType = {
-  videos: Item[];
+  items: (Video & Channel)[];
 }
 
-function Videos({videos}: PropsType): JSX.Element {
+function Videos({items}: PropsType): JSX.Element {
 
   return (
     <ul className={styles.videosList}>
-      {videos.map((item) => (
-        <li className={styles.videoCard} key={item.id.videoId}>
+      {items.map((item) => (
+        <li className={styles.itemCard}
+          key={item.id.videoId || item.id.channelId}
+        >
           {item.id.videoId && <VideoCard video={item} />}
-          {item.id.channelId && <ChannelCard />}
+          {item.id.channelId && <ChannelCard channelDetail={item}/>}
         </li>
       ))}
     </ul>
