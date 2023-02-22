@@ -4,16 +4,17 @@ import PageLayout from '../page-layout/page-layout';
 import {useEffect, useState} from 'react';
 import styles from './feed-page.module.css';
 import {fetchFromAPI} from '../../utils/fetchFromAPI';
-import {Item} from '../../types/types';
+import { Video } from '../../types/video';
+import { Channel } from '../../types/channel';
 
 function FeedPage(): JSX.Element {
 
   const [selectedCategory, setSelectedCategory] = useState('New');
-  const [videos, setVideos] = useState<Item[]>([]);
+  const [items, setItems] = useState<(Video & Channel)[]>([]);
 
   useEffect(() => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items));
+      .then((data) => setItems(data.items));
   }, [selectedCategory]);
 
   return (
@@ -26,7 +27,7 @@ function FeedPage(): JSX.Element {
           <h4 className={styles.videosTitle}>
             {selectedCategory} <span style={{color: '#f31503'}}>videos</span>
           </h4>
-          <Videos videos={videos}/>
+          <Videos items={items}/>
         </div>
       </div>
     </PageLayout>

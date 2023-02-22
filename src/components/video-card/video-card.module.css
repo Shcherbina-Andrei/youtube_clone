@@ -6,10 +6,31 @@
 .previewImage {
   display: block;
   object-fit: cover;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
 .cardContent {
   background-color: #1e1e1e;
   height: 106px;
+  padding: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.videoTitle {
+  margin: 0;
+  color: #ffffff;
+}
+
+.channelTitle {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
 }
