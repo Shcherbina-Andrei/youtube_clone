@@ -1,0 +1,35 @@
+.videoCard {
+  min-height: 95vh;
+}
+
+.wrapper {
+  display: flex;
+  direction: row;
+}
+
+.innerWrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.videoWrapper {
+  position: sticky;
+  top: 86px;
+  width: 100%;
+}
+
+.player {
+  height: 77vh;
+  width: 100%;
+}
+
+.videoTitle {
+  color: #ffffff;
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    direction: column;
+  }
+}
