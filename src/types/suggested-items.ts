@@ -9,19 +9,6 @@ export type SuggestedItems = {
   items: (Video & Channel)[];
 }
 
-export type Default = {
-  url: string;
-  width?: number;
-  height?: number;
-}
-
-export type Id = {
-  kind: string;
-  channelId?: string;
-  videoId?: string;
-  playlistId?: string;
-}
-
 export type PageInfo = {
   totalResults: number;
   resultsPerPage: number;
