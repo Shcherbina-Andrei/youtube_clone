@@ -4,7 +4,7 @@
 
 .wrapper {
   display: flex;
-  direction: row;
+  flex-direction: row;
 }
 
 .innerWrapper {
@@ -17,19 +17,41 @@
   position: sticky;
   top: 86px;
   width: 100%;
+  height: 700px;
 }
 
 .player {
-  height: 77vh;
-  width: 100%;
+  height: 77vh !important;;
+  width: 100% !important;;
 }
 
 .videoTitle {
   color: #ffffff;
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 16px;
+  margin: 0;
 }
 
-@media screen and (max-width: 600px) {
+.videoCharacteristics {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+.channelTitle {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0;
+}
+
+.relatedVideos {
+  padding: 8px 16px;
+}
+
+@media screen and (max-width: 900px) {
   .wrapper {
-    direction: column;
+    flex-direction: column;
   }
 }

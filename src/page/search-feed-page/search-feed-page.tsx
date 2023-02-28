@@ -7,7 +7,7 @@ import { Video } from '../../types/video';
 import { Channel } from '../../types/channel';
 import {useParams} from 'react-router-dom';
 
-function FeedPage(): JSX.Element {
+function SearchFeedPage(): JSX.Element {
   const [items, setItems] = useState<(Video & Channel)[]>([]);
   const {searchTerm} = useParams();
 
@@ -20,11 +20,11 @@ function FeedPage(): JSX.Element {
 
   return (
     <PageLayout>
-      <div className={styles.feed}>
-        <div className={styles.videosWrapper}>
-          <h4 className={styles.videosTitle}>
+      <div className={styles.searchFeed}>
+        <div className={styles.wrapper}>
+          <h2 className={styles.videosTitle}>
             Search result for <span style={{color: '#f31503'}}>{searchTerm}</span>
-          </h4>
+          </h2>
           <Videos items={items}/>
         </div>
       </div>
@@ -32,4 +32,4 @@ function FeedPage(): JSX.Element {
   );
 }
 
-export default FeedPage;
+export default SearchFeedPage;

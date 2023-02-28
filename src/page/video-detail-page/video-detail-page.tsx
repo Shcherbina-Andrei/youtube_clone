@@ -5,9 +5,9 @@ import styles from './video-detail-page.module.css';
 import ReactPlayer from 'react-player';
 import {fetchRelatedVideos, fetchVideoDetail} from '../../utils/fetchFromAPI';
 import {FilmDetail} from '../../types/video-detail';
-import Videos from '../../components/videos/videos';
-import { Video } from '../../types/video';
+import {Video} from '../../types/video';
 import RelatedVideos from '../../components/related-videos/related-videos';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 
 function VideoDetailPage(): JSX.Element {
   const [videoDetail, setVideoDetail] = useState<FilmDetail | null>(null);
@@ -24,9 +24,15 @@ function VideoDetailPage(): JSX.Element {
 
   },[id]);
 
+  if (!id) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   if (!videoDetail) {
     return (
-      <div>Loading</div>
+      <LoadingScreen />
     );
   }
 
@@ -42,9 +48,9 @@ function VideoDetailPage(): JSX.Element {
               <h4 className={styles.videoTitle}>{title}</h4>
               <div className={styles.videoCharacteristics}>
                 <Link to={`/channel/${channelId}`}>
-                  <h6 className={styles.channelTitle}>
+                  <h4 className={styles.channelTitle}>
                     {channelTitle}
-                  </h6>
+                  </h4>
                 </Link>
                 <div>
                   <p className={styles.videoViews}>{Number(viewCount).toLocaleString()} views</p>
@@ -53,13 +59,14 @@ function VideoDetailPage(): JSX.Element {
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.relatedVideos}>
-          {!relatedVideos
-            ?
-            <div>loading...</div>
-            :
-            <RelatedVideos videos={relatedVideos} />}
+
+          <div className={styles.relatedVideos}>
+            {!relatedVideos
+              ?
+              <div>loading...</div>
+              :
+              <RelatedVideos videos={relatedVideos} />}
+          </div>
         </div>
       </div>
     </PageLayout>

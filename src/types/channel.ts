@@ -4,7 +4,7 @@ export type Channel = {
   kind: string;
   id: Id;
   snippet: ChannelDetails;
-  statistics: Statistics;
+  statistics?: Statistics;
 }
 
 type ChannelDetails = {

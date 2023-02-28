@@ -11,8 +11,11 @@ function Sidebar({selectedCategory, setSelectedCategory}: PropsType): JSX.Elemen
   return (
     <div className={styles.wrapper}>
       {categories.map((category) => (
-        <button className={`${styles.categoryButton} ${selectedCategory === category ? styles.categoryButtonSelected : ''}`} key={category} onClick={() => setSelectedCategory(category)}>
-          <span>{category}</span>
+        <button className={`${styles.categoryButton} ${selectedCategory === category.name ? styles.categoryButtonSelected : ''}`} key={category.name} onClick={() => setSelectedCategory(category.name)}>
+          <span className={styles.iconsButtonSvg}>
+            {category.icon}
+          </span>
+          <span className={styles.textButton}>{category.name}</span>
         </button>
       ))}
     </div>

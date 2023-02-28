@@ -7,3 +7,8 @@ declare module '*.png' {
   const value: string;
   export = value;
 }
+
+declare module '*.svg' {
+  const image: string;
+  export = image;
+}
