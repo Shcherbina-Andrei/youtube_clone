@@ -24,9 +24,9 @@ function FeedPage(): JSX.Element {
           <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         </div>
         <div className={styles.videosWrapper}>
-          <h4 className={styles.videosTitle}>
+          <h2 className={styles.videosTitle}>
             {selectedCategory} <span style={{color: '#f31503'}}>videos</span>
-          </h4>
+          </h2>
           <Videos items={items}/>
         </div>
       </div>

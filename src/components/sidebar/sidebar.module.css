@@ -11,7 +11,7 @@
   justify-content: flex-start;
   cursor: pointer;
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 700;
   text-transform: capitalize;
   background: transparent;
   outline: none;
@@ -22,17 +22,54 @@
   transition: all 0.3s ease;
 }
 
+.textButton {
+  opacity: 0.8;
+}
+
+.iconsButtonSvg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  fill: #fc1503;
+  margin-right: 15px;
+}
+
+.iconsButtonSvg svg {
+  fill: #fc1503;
+  margin: 0 auto;
+}
+
 .categoryButton:hover {
   background-color: #fc1503;
   color: #ffffff;
 }
 
+.categoryButton:hover .iconsButtonSvg svg {
+  fill: #ffffff;
+}
+
+
 .categoryButtonSelected {
   background-color: #fc1503;
 }
 
-@media screen and (max-width: 600px) {
+.categoryButtonSelected .textButton {
+  opacity: 1;
+}
+
+.categoryButtonSelected .iconsButtonSvg svg {
+  fill: #ffffff;
+}
+
+@media screen and (max-width: 900px) {
   .wrapper {
+    flex-direction: row;
     height: auto;
+  }
+
+  .categoryButton {
+    margin: 10px;
   }
 }

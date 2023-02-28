@@ -30,11 +30,13 @@ function ChannelDetailPage(): JSX.Element {
 
   return (
     <PageLayout>
-      <div className={styles.wrapper}>
-        <ChannelCard channelDetail={channelDetail} />
-      </div>
-      <div className={styles.videosWrapper}>
-        <Videos items={videos} />
+      <div className={styles.channel}>
+        <div className={styles.wrapper}>
+          <ChannelCard channelDetail={channelDetail} />
+        </div>
+        <div className={styles.videosWrapper}>
+          <Videos items={videos} />
+        </div>
       </div>
     </PageLayout>
   );

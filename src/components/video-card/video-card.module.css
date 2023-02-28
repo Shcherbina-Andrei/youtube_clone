@@ -12,7 +12,7 @@
 .cardContent {
   background-color: #1e1e1e;
   height: 106px;
-  padding: 10px;
+  padding: 16px;
 }
 
 .link {
@@ -21,16 +21,34 @@
 }
 
 .videoTitle {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.75;
   margin: 0;
   color: #ffffff;
 }
 
 .channelTitle {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #808080;
   margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    width: 358px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .wrapper {
     width: 100%;
+  }
+
+  .previewImage {
+    width: 100%
   }
 }

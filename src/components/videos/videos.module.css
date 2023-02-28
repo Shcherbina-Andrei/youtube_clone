@@ -3,5 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
   gap: 20px;
 }

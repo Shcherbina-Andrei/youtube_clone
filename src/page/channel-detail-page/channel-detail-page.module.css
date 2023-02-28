@@ -1,3 +1,19 @@
+.channel {
+  min-height: 95vh;
+}
+
 .wrapper {
   height: 300px;
+}
+
+.videosWrapper {
+  display: flex;
+  padding: 16px;
+  padding-left: 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .videosWrapper {
+    padding-left: 16px;
+  }
 }

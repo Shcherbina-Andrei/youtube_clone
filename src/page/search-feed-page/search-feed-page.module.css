@@ -1,0 +1,23 @@
+.searchFeed {
+  min-height: 95vh;
+  padding: 16px;
+}
+
+.wrapper {
+  margin-left: 100px;
+}
+
+.videosTitle {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    margin-left: 0;
+  }
+}
