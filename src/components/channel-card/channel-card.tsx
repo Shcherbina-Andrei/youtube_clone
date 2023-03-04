@@ -4,13 +4,14 @@ import styles from './channel-card.module.css';
 
 type PropsType = {
   channelDetail: Channel;
+  channelLink: string;
 }
 
-function ChannelCard({channelDetail}: PropsType): JSX.Element {
+function ChannelCard({channelDetail, channelLink}: PropsType): JSX.Element {
 
   return (
     <div className={styles.wrapper}>
-      <Link className={styles.link} to={`/channel/${channelDetail.id.channelId}`}>
+      <Link className={styles.link} to={channelLink}>
         <div className={styles.imageWrapper}>
           {channelDetail.snippet.thumbnails.high.url && (
             <img className={styles.previewImage} src={channelDetail.snippet.thumbnails.high.url} height="180" width="180"

@@ -1,5 +1,11 @@
 import {Thumbnails} from './thumbnails';
 
+export type ChannelResponse = {
+  kind: string;
+  pageInfo: PageInfo;
+  items: Channel[];
+}
+
 export type Channel = {
   kind: string;
   id: Id;
@@ -28,4 +34,9 @@ type Statistics = {
 type Id = {
   kind: string;
   channelId: string;
+}
+
+type PageInfo = {
+  totalResults: number;
+  resultsPerPage: number;
 }

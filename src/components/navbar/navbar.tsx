@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
 import SearchBar from '../search-bar/search-bar';
 import styles from './navbar.module.css';
+import {memo} from 'react';
 
 function Navbar(): JSX.Element {
   return (
@@ -16,4 +17,4 @@ function Navbar(): JSX.Element {
   );
 }
 
-export default Navbar;
+export default memo(Navbar);

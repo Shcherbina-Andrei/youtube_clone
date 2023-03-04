@@ -27,3 +27,8 @@ export const categories: readonly Category[] = [
   {name: 'Gym', icon: <GymIcon />}
 ];
 
+export enum NameSpace {
+  Videos = 'VIDEOS',
+  App = 'APP',
+  Channel = 'CHANNEL'
+}

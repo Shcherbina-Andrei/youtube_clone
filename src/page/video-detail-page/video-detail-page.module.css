@@ -40,9 +40,12 @@
   padding: 8px 16px;
 }
 
+.channelLink {
+  text-decoration: none;
+}
+
 .channelTitle {
   color: #ffffff;
-  text-decoration: none;
   margin: 0;
 }
 

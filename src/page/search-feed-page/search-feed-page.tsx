@@ -1,22 +1,33 @@
 import Videos from '../../components/videos/videos';
 import PageLayout from '../page-layout/page-layout';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import styles from './search-feed-page.module.css';
-import {fetchFromAPI} from '../../utils/fetchFromAPI';
-import { Video } from '../../types/video';
-import { Channel } from '../../types/channel';
 import {useParams} from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getSearchVideos } from '../../store/videos-data/selectors';
+import { fetchSearchVideosAction } from '../../store/api-actions';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
+import { getStatusDataLoading } from '../../store/app-process/selectors';
 
 function SearchFeedPage(): JSX.Element {
-  const [items, setItems] = useState<(Video & Channel)[]>([]);
+  const dispatch = useAppDispatch();
+  const searchedItems = useAppSelector(getSearchVideos);
+  const loadingStatus = useAppSelector(getStatusDataLoading);
   const {searchTerm} = useParams();
 
   useEffect(() => {
     if (searchTerm) {
-      fetchFromAPI(`search?part=snippet&q=${searchTerm}`)
-        .then((data) => setItems(data.items));
+      dispatch(fetchSearchVideosAction(searchTerm));
     }
-  }, [searchTerm]);
+  }, [searchTerm, dispatch]);
+
+  if (!searchedItems || loadingStatus) {
+    return (
+      <PageLayout>
+        <LoadingScreen />
+      </PageLayout>
+    );
+  }
 
   return (
     <PageLayout>
@@ -25,7 +36,7 @@ function SearchFeedPage(): JSX.Element {
           <h2 className={styles.videosTitle}>
             Search result for <span style={{color: '#f31503'}}>{searchTerm}</span>
           </h2>
-          <Videos items={items}/>
+          <Videos items={searchedItems.items}/>
         </div>
       </div>
     </PageLayout>

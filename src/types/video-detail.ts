@@ -1,6 +1,6 @@
-export type FilmDetailResponse = {
+export type VideoDetailResponse = {
   kind: string;
-  items: FilmDetail[];
+  items: VideoDetail[];
   pageInfo: PageInfo;
 }
 
@@ -9,7 +9,7 @@ type PageInfo = {
   resultsPerPage: number;
 }
 
-export type FilmDetail = {
+export type VideoDetail = {
   kind: string;
   id: string;
   snippet: Snippet;
