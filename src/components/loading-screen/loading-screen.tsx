@@ -1,10 +1,12 @@
-import PageLayout from '../../page/page-layout/page-layout';
+import styles from './loading-screen.module.css';
 
 function LoadingScreen(): JSX.Element {
   return (
-    <PageLayout>
-      <p>Loading</p>
-    </PageLayout>
+    <div className={styles.loadingWrapper}>
+      <div className={styles.spinnerBox}>
+        <div className={styles.threeQuarterSpinner}></div>
+      </div>
+    </div>
   );
 }
 

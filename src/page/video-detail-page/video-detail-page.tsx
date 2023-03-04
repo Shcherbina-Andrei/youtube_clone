@@ -1,42 +1,42 @@
 import PageLayout from '../page-layout/page-layout';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import styles from './video-detail-page.module.css';
 import ReactPlayer from 'react-player';
-import {fetchRelatedVideos, fetchVideoDetail} from '../../utils/fetchFromAPI';
-import {FilmDetail} from '../../types/video-detail';
-import {Video} from '../../types/video';
 import RelatedVideos from '../../components/related-videos/related-videos';
 import LoadingScreen from '../../components/loading-screen/loading-screen';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getCurrentVideo, getRelatedVideos } from '../../store/videos-data/selectors';
+import { fetchCurrentVideoAction, fetchRelatedVideosAction } from '../../store/api-actions';
+import { getStatusDataLoading } from '../../store/app-process/selectors';
 
 function VideoDetailPage(): JSX.Element {
-  const [videoDetail, setVideoDetail] = useState<FilmDetail | null>(null);
-  const [relatedVideos, setRelatedVideos] = useState<Video[] | null>(null);
+  const dispatch = useAppDispatch();
+  const videoDetail = useAppSelector(getCurrentVideo);
+  const relatedVideos = useAppSelector(getRelatedVideos);
+  const loadingStatus = useAppSelector(getStatusDataLoading);
   const {id} = useParams();
 
   useEffect(() => {
     if (id) {
-      fetchVideoDetail(id)
-        .then((data) => setVideoDetail(data.items[0]));
-      fetchRelatedVideos(id)
-        .then((data) => setRelatedVideos(data.items));
+      dispatch(fetchCurrentVideoAction(id));
+      dispatch(fetchRelatedVideosAction(id));
     }
 
-  },[id]);
+  },[id, dispatch]);
 
-  if (!id) {
+  if (!id || !relatedVideos || !videoDetail || loadingStatus) {
     return (
-      <LoadingScreen />
+      <PageLayout>
+        <LoadingScreen />
+      </PageLayout>
     );
   }
 
-  if (!videoDetail) {
-    return (
-      <LoadingScreen />
-    );
-  }
+  const currentVideo = videoDetail.items[0];
+  const currentRelatedVideos = relatedVideos.items;
 
-  const {snippet: {title, channelId, channelTitle}, statistics: {viewCount, likeCount}} = videoDetail;
+  const {snippet: {title, channelId, channelTitle}, statistics: {viewCount, likeCount}} = currentVideo;
 
   return (
     <PageLayout>
@@ -47,7 +47,7 @@ function VideoDetailPage(): JSX.Element {
               <ReactPlayer className={styles.player} url={`https://www.youtube.com/watch?v=${id}`} controls />
               <h4 className={styles.videoTitle}>{title}</h4>
               <div className={styles.videoCharacteristics}>
-                <Link to={`/channel/${channelId}`}>
+                <Link className={styles.channelLink} to={`/channel/${channelId}`}>
                   <h4 className={styles.channelTitle}>
                     {channelTitle}
                   </h4>
@@ -65,7 +65,7 @@ function VideoDetailPage(): JSX.Element {
               ?
               <div>loading...</div>
               :
-              <RelatedVideos videos={relatedVideos} />}
+              <RelatedVideos videos={currentRelatedVideos} />}
           </div>
         </div>
       </div>

@@ -1,38 +1,45 @@
 import PageLayout from '../page-layout/page-layout';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import Videos from '../../components/videos/videos';
 import ChannelCard from '../../components/channel-card/channel-card';
-import { fetchFromAPI } from '../../utils/fetchFromAPI';
-import { Channel } from '../../types/channel';
-import { Video } from '../../types/video';
 import styles from './channel-detail-page.module.css';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {fetchChannelVideosAction, fetchCurrentChannelAction} from '../../store/api-actions';
+import {getChannelVideos, getCurrentChannel} from '../../store/channel-data/selectors';
+import { getStatusDataLoading } from '../../store/app-process/selectors';
 
 function ChannelDetailPage(): JSX.Element {
   const {id} = useParams();
-  const [channelDetail, setChannelDetail] = useState<Channel | null>(null);
-  const [videos, setVideos] = useState<(Video & Channel)[]>([]);
+  const dispatch = useAppDispatch();
+  const channel = useAppSelector(getCurrentChannel);
+  const channelVideos = useAppSelector(getChannelVideos);
+  const loadingStatus = useAppSelector(getStatusDataLoading);
 
   useEffect(() => {
     if (id) {
-      fetchFromAPI(`channels?part=snippet&id=${id}`)
-        .then((data) => setChannelDetail(data.items[0]));
-      fetchFromAPI(`search?channelId=${id}&part=snippet&order=date`)
-        .then((data) => setVideos(data.items));
+      dispatch(fetchCurrentChannelAction(id));
+      dispatch(fetchChannelVideosAction(id));
     }
-  }, [id]);
+  }, [id, dispatch]);
 
-  if (!channelDetail) {
+  if (!channel || !channelVideos || loadingStatus) {
     return (
-      <div>Channel not found</div>
+      <PageLayout>
+        <LoadingScreen />
+      </PageLayout>
     );
   }
+
+  const channelDetail = channel.items[0];
+  const videos = channelVideos.items;
 
   return (
     <PageLayout>
       <div className={styles.channel}>
         <div className={styles.wrapper}>
-          <ChannelCard channelDetail={channelDetail} />
+          <ChannelCard channelDetail={channelDetail} channelLink=''/>
         </div>
         <div className={styles.videosWrapper}>
           <Videos items={videos} />

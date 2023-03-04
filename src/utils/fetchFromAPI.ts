@@ -1,4 +1,4 @@
-import { FilmDetailResponse } from './../types/video-detail';
+import { VideoDetailResponse } from './../types/video-detail';
 import { SuggestedItems } from '../types/suggested-items';
 import axios from 'axios';
 import { RelatedVideos } from '../types/related-videos';
@@ -28,7 +28,7 @@ export const fetchFeed = async (selectedCategory: string) => {
 };
 
 export const fetchVideoDetail = async (id: string) => {
-  const {data} = await axios.get<FilmDetailResponse>(`${BASE_URL}/videos?part=snippet,statistics&id=${id}`, options);
+  const {data} = await axios.get<VideoDetailResponse>(`${BASE_URL}/videos?part=snippet,statistics&id=${id}`, options);
 
   return data;
 };
