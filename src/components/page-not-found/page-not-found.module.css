@@ -1,0 +1,12 @@
+.wrapper {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 90vh;
+  padding-top: 100px;
+  background-color: #230d21;
+  font-family: 'Roboto';
+  font-size: 46px;
+  color: #ffffff;
+}
