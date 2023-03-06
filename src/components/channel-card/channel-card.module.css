@@ -27,14 +27,14 @@
 
 .channelTitle {
   margin: 0;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 1.25rem;
   line-height: 1.6;
   color: #ffffff;
 }
 
 .subscribersCount {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #808080;

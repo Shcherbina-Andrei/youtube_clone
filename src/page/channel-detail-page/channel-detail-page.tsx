@@ -9,6 +9,7 @@ import {useAppDispatch, useAppSelector} from '../../hooks';
 import {fetchChannelVideosAction, fetchCurrentChannelAction} from '../../store/api-actions';
 import {getChannelVideos, getCurrentChannel} from '../../store/channel-data/selectors';
 import { getStatusDataLoading } from '../../store/app-process/selectors';
+import PageNotFound from '../../components/page-not-found/page-not-found';
 
 function ChannelDetailPage(): JSX.Element {
   const {id} = useParams();
@@ -29,6 +30,12 @@ function ChannelDetailPage(): JSX.Element {
       <PageLayout>
         <LoadingScreen />
       </PageLayout>
+    );
+  }
+
+  if (!channel.items) {
+    return (
+      <PageNotFound />
     );
   }
 

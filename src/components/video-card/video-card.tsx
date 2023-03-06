@@ -12,7 +12,7 @@ function VideoCard({video}: PropsType): JSX.Element {
 
   return (
     <div className={styles.wrapper}>
-      <Link to="/">
+      <Link to={`/video/${video.id.videoId}`}>
         <img className={styles.previewImage} src={videoData.thumbnails.high.url} alt="video-preview" width="358" height="180" />
       </Link>
       <div className={styles.cardContent}>

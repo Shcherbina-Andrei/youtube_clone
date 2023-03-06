@@ -1,4 +1,4 @@
-import { ChannelResponse } from './../types/channel';
+import {ChannelResponse} from './../types/channel';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AxiosInstance} from 'axios';
 import {RelatedVideos} from '../types/related-videos';
@@ -35,7 +35,7 @@ export const fetchSearchVideosAction = createAsyncThunk<SuggestedItems, string, 
   }
 );
 
-export const fetchCurrentVideoAction = createAsyncThunk<VideoDetailResponse, string, {
+export const fetchCurrentVideoAction = createAsyncThunk<VideoDetailResponse | null, string, {
   dispatch: AppDispatch;
   extra: AxiosInstance;
 }
@@ -45,6 +45,10 @@ export const fetchCurrentVideoAction = createAsyncThunk<VideoDetailResponse, str
     dispatch(setDataIsLoading(true));
     const {data} = await api.get<VideoDetailResponse>(`/videos?part=snippet,statistics&id=${id}`);
     dispatch(setDataIsLoading(false));
+
+    if (data.items.length === 0) {
+      throw Error;
+    }
 
     return data;
   }
