@@ -37,6 +37,8 @@
 }
 
 .iconsButtonSvg svg {
+  width: 24px;
+  height: 24px;
   fill: #fc1503;
   margin: 0 auto;
 }
