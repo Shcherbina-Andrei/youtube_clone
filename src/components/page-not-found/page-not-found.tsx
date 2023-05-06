@@ -4,9 +4,7 @@ import styles from './page-not-found.module.css';
 function PageNotFound(): JSX.Element {
   return (
     <PageLayout>
-      <div className={styles.wrapper}>
-        Page not found
-      </div>
+      <div className={styles.wrapper}>Page not found</div>
     </PageLayout>
   );
 }
