@@ -8,12 +8,12 @@ export const createApi = (): AxiosInstance => {
     baseURL: BASE_URL,
     timeout: REQUEST_TIME,
     params: {
-      maxResults: '50'
+      maxResults: '50',
     },
     headers: {
       'X-RapidAPI-Key': process.env.REACT_APP_RAPID_KEY,
-      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-    }
+      'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+    },
   });
 
   return api;

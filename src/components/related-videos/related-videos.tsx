@@ -13,9 +13,7 @@ function RelatedVideos(): JSX.Element {
   return (
     <div className={styles.videosList}>
       {videos.items.map((video) => (
-        <li className={styles.itemCard}
-          key={video.id.videoId}
-        >
+        <li className={styles.itemCard} key={video.id.videoId}>
           <VideoCard video={video} />
         </li>
       ))}

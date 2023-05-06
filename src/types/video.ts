@@ -1,10 +1,10 @@
-import {Thumbnails} from './thumbnails';
+import { Thumbnails } from './thumbnails';
 
 export type Video = {
   kind: string;
   id: Id;
   snippet: VideoDetails;
-}
+};
 
 type VideoDetails = {
   publishedAt: string;

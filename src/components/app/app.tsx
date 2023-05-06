@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ChannelDetailPage from '../../page/channel-detail-page/channel-detail-page';
 import FeedPage from '../../page/feed-page/feed-page';
 import SearchFeedPage from '../../page/search-feed-page/search-feed-page';
