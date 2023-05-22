@@ -1,17 +1,17 @@
-import {Thumbnails} from './thumbnails';
+import { Thumbnails } from './thumbnails';
 
 export type ChannelResponse = {
   kind: string;
   pageInfo: PageInfo;
   items: Channel[];
-}
+};
 
 export type Channel = {
   kind: string;
   id: Id;
   snippet: ChannelDetails;
   statistics?: Statistics;
-}
+};
 
 type ChannelDetails = {
   publishedAt: string;
@@ -29,14 +29,14 @@ type Statistics = {
   subscriberCount: string;
   hiddenSubscriberCount: boolean;
   videoCount: string;
-}
+};
 
 type Id = {
   kind: string;
   channelId: string;
-}
+};
 
 type PageInfo = {
   totalResults: number;
   resultsPerPage: number;
-}
+};

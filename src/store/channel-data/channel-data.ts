@@ -1,5 +1,8 @@
 import { SuggestedItems } from './../../types/suggested-items';
-import { fetchCurrentChannelAction, fetchChannelVideosAction } from './../api-actions';
+import {
+  fetchCurrentChannelAction,
+  fetchChannelVideosAction,
+} from './../api-actions';
 import { NameSpace } from './../../const';
 import { createSlice } from '@reduxjs/toolkit';
 import { ChannelResponse } from './../../types/channel';
@@ -11,22 +14,20 @@ type ChannelData = {
 
 const initialState: ChannelData = {
   currentChannel: null,
-  channelVideos: null
+  channelVideos: null,
 };
 
-export const channelData = createSlice(
-  {
-    name: NameSpace.Channel,
-    initialState,
-    reducers: {},
-    extraReducers(builder) {
-      builder
-        .addCase(fetchCurrentChannelAction.fulfilled, (state, action) => {
-          state.currentChannel = action.payload;
-        })
-        .addCase(fetchChannelVideosAction.fulfilled, (state, action) => {
-          state.channelVideos = action.payload;
-        });
-    }
-  }
-);
+export const channelData = createSlice({
+  name: NameSpace.Channel,
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(fetchCurrentChannelAction.fulfilled, (state, action) => {
+        state.currentChannel = action.payload;
+      })
+      .addCase(fetchChannelVideosAction.fulfilled, (state, action) => {
+        state.channelVideos = action.payload;
+      });
+  },
+});

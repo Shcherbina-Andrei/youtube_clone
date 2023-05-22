@@ -7,9 +7,9 @@ export type SuggestedItems = {
   regionCode: string;
   pageInfo: PageInfo;
   items: (Video & Channel)[];
-}
+};
 
 export type PageInfo = {
   totalResults: number;
   resultsPerPage: number;
-}
+};

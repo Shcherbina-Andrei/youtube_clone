@@ -19,11 +19,11 @@ export const fetchFeedVideosAction = createAsyncThunk<
   async (selectedCategory, { dispatch, extra: api }) => {
     dispatch(setDataIsLoading(true));
     const { data } = await api.get<SuggestedItems>(
-      `/search?part=snippet&q=${selectedCategory}`
+      `/search?part=snippet&q=${selectedCategory}`,
     );
     dispatch(setDataIsLoading(false));
     return data;
-  }
+  },
 );
 
 export const fetchSearchVideosAction = createAsyncThunk<
@@ -36,7 +36,7 @@ export const fetchSearchVideosAction = createAsyncThunk<
 >('videos/fetchSearchVideos', async (searchTerm, { dispatch, extra: api }) => {
   dispatch(setDataIsLoading(true));
   const { data } = await api.get<SuggestedItems>(
-    `search?part=snippet&q=${searchTerm}`
+    `search?part=snippet&q=${searchTerm}`,
   );
   dispatch(setDataIsLoading(false));
   return data;
@@ -52,7 +52,7 @@ export const fetchCurrentVideoAction = createAsyncThunk<
 >('videos/fetchCurrentVideo', async (id, { dispatch, extra: api }) => {
   dispatch(setDataIsLoading(true));
   const { data } = await api.get<VideoDetailResponse>(
-    `/videos?part=snippet,statistics&id=${id}`
+    `/videos?part=snippet,statistics&id=${id}`,
   );
   dispatch(setDataIsLoading(false));
 
@@ -72,7 +72,7 @@ export const fetchRelatedVideosAction = createAsyncThunk<
   }
 >('videos/fetchRelatedVideos', async (id, { extra: api }) => {
   const { data } = await api.get<RelatedVideos>(
-    `/search?part=snippet&relatedToVideoId${id}`
+    `/search?part=snippet&relatedToVideoId${id}`,
   );
 
   return data;
@@ -88,7 +88,7 @@ export const fetchCurrentChannelAction = createAsyncThunk<
 >('channel/fetchCurrentChannel', async (id, { dispatch, extra: api }) => {
   dispatch(setDataIsLoading(true));
   const { data } = await api.get<ChannelResponse>(
-    `channels?part=snippet&id=${id}`
+    `channels?part=snippet&id=${id}`,
   );
   dispatch(setDataIsLoading(false));
 
@@ -104,7 +104,7 @@ export const fetchChannelVideosAction = createAsyncThunk<
   }
 >('channel/fetchChannelVideos', async (id, { extra: api }) => {
   const { data } = await api.get<SuggestedItems>(
-    `search?channelId=${id}&part=snippet&order=date`
+    `search?channelId=${id}&part=snippet&order=date`,
   );
 
   return data;

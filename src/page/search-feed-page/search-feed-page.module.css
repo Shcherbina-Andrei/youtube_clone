@@ -21,3 +21,11 @@
     margin-left: 0;
   }
 }
+
+.videosNotFound {
+  margin-top: 160px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
+  text-align: center;
+}

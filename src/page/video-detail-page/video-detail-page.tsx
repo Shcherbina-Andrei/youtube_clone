@@ -1,4 +1,3 @@
-import PageLayout from '../page-layout/page-layout';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styles from './video-detail-page.module.css';
@@ -29,11 +28,7 @@ function VideoDetailPage(): JSX.Element {
   const loadingStatus = useAppSelector(getStatusDataLoading);
 
   if (!videoDetail && loadingStatus) {
-    return (
-      <PageLayout>
-        <LoadingScreen />
-      </PageLayout>
-    );
+    return <LoadingScreen />;
   }
 
   if (!videoDetail?.items) {
@@ -49,42 +44,37 @@ function VideoDetailPage(): JSX.Element {
   } = currentVideo;
 
   return (
-    <PageLayout>
-      <div className={styles.videoCard}>
-        <div className={styles.wrapper}>
-          <div className={styles.innerWrapper}>
-            <div className={styles.videoWrapper}>
-              <ReactPlayer
-                className={styles.player}
-                url={`https://www.youtube.com/watch?v=${currentId}`}
-                controls
-              />
-              <h4 className={styles.videoTitle}>{title}</h4>
-              <div className={styles.videoCharacteristics}>
-                <Link
-                  className={styles.channelLink}
-                  to={`/channel/${channelId}`}
-                >
-                  <h4 className={styles.channelTitle}>{channelTitle}</h4>
-                </Link>
-                <div className={styles.videoInfo}>
-                  <p className={styles.videoViews}>
-                    {Number(viewCount).toLocaleString()} views
-                  </p>
-                  <p className={styles.videoLikes}>
-                    {Number(likeCount).toLocaleString()} likes
-                  </p>
-                </div>
+    <div className={styles.videoCard}>
+      <div className={styles.wrapper}>
+        <div className={styles.innerWrapper}>
+          <div className={styles.videoWrapper}>
+            <ReactPlayer
+              className={styles.player}
+              url={`https://www.youtube.com/watch?v=${currentId}`}
+              controls
+            />
+            <h4 className={styles.videoTitle}>{title}</h4>
+            <div className={styles.videoCharacteristics}>
+              <Link className={styles.channelLink} to={`/channel/${channelId}`}>
+                <h4 className={styles.channelTitle}>{channelTitle}</h4>
+              </Link>
+              <div className={styles.videoInfo}>
+                <p className={styles.videoViews}>
+                  {Number(viewCount).toLocaleString()} views
+                </p>
+                <p className={styles.videoLikes}>
+                  {Number(likeCount).toLocaleString()} likes
+                </p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className={styles.relatedVideos}>
-            <RelatedVideos />
-          </div>
+        <div className={styles.relatedVideos}>
+          <RelatedVideos />
         </div>
       </div>
-    </PageLayout>
+    </div>
   );
 }
 
