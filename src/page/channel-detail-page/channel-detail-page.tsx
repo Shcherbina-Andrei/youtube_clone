@@ -1,4 +1,3 @@
-import PageLayout from '../page-layout/page-layout';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Videos from '../../components/videos/videos';
@@ -32,11 +31,7 @@ function ChannelDetailPage(): JSX.Element {
   }, [id, dispatch]);
 
   if (!channel || !channelVideos || loadingStatus) {
-    return (
-      <PageLayout>
-        <LoadingScreen />
-      </PageLayout>
-    );
+    return <LoadingScreen />;
   }
 
   if (!channel.items) {
@@ -47,16 +42,14 @@ function ChannelDetailPage(): JSX.Element {
   const videos = channelVideos.items;
 
   return (
-    <PageLayout>
-      <div className={styles.channel}>
-        <div className={styles.wrapper}>
-          <ChannelCard channelDetail={channelDetail} channelLink="" />
-        </div>
-        <div className={styles.videosWrapper}>
-          <Videos items={videos} />
-        </div>
+    <div className={styles.channel}>
+      <div className={styles.wrapper}>
+        <ChannelCard channelDetail={channelDetail} channelLink="" />
       </div>
-    </PageLayout>
+      <div className={styles.videosWrapper}>
+        <Videos items={videos} />
+      </div>
+    </div>
   );
 }
 

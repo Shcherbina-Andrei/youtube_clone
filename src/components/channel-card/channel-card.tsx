@@ -27,7 +27,7 @@ function ChannelCard({ channelDetail, channelLink }: PropsType): JSX.Element {
           <p className={styles.subscribersCount}>
             {parseInt(
               channelDetail.statistics.subscriberCount,
-              10
+              10,
             ).toLocaleString('en-US')}{' '}
             Subscribers
           </p>

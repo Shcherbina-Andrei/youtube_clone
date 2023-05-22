@@ -2,12 +2,12 @@ export type VideoDetailResponse = {
   kind: string;
   items: VideoDetail[];
   pageInfo: PageInfo;
-}
+};
 
 type PageInfo = {
   totalResults: number;
   resultsPerPage: number;
-}
+};
 
 export type VideoDetail = {
   kind: string;
@@ -15,14 +15,14 @@ export type VideoDetail = {
   snippet: Snippet;
   contentDetails: ContentDetails;
   statistics: Statistics;
-}
+};
 
 type Statistics = {
   viewCount: string;
   likeCount: string;
   favoriteCount: string;
   commentCount: string;
-}
+};
 
 type ContentDetails = {
   duration: string;
@@ -31,8 +31,7 @@ type ContentDetails = {
   caption: string;
   licensedContent: boolean;
   projection: string;
-}
-
+};
 
 type Snippet = {
   publishedAt: string;
@@ -45,12 +44,12 @@ type Snippet = {
   liveBroadcastContent: string;
   localized: Localized;
   defaultAudioLanguage: string;
-}
+};
 
 type Localized = {
   title: string;
   description: string;
-}
+};
 
 type Thumbnails = {
   default: Default;
@@ -58,10 +57,10 @@ type Thumbnails = {
   high: Default;
   standard: Default;
   maxres: Default;
-}
+};
 
 type Default = {
   url: string;
   width: number;
   height: number;
-}
+};

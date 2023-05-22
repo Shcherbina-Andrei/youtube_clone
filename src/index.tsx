@@ -6,11 +6,10 @@ import { store } from './store';
 import { fetchFeedVideosAction } from './store/api-actions';
 import './styles/styles.css';
 
-
 store.dispatch(fetchFeedVideosAction('New'));
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement,
 );
 
 root.render(
@@ -18,5 +17,5 @@ root.render(
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

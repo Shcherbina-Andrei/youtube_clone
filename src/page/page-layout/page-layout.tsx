@@ -1,17 +1,13 @@
-import { ReactNode } from 'react';
 import Navbar from '../../components/navbar/navbar';
 import styles from './page-layout.module.css';
 import { memo } from 'react';
+import { Outlet } from 'react-router-dom';
 
-type PropsType = {
-  children: ReactNode;
-};
-
-function PageLayout({ children }: PropsType): JSX.Element {
+function PageLayout(): JSX.Element {
   return (
     <div className={styles.wrapper}>
       <Navbar />
-      {children}
+      <Outlet />
     </div>
   );
 }

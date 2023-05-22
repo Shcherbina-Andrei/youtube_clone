@@ -1,6 +1,5 @@
 import Sidebar from '../../components/sidebar/sidebar';
 import Videos from '../../components/videos/videos';
-import PageLayout from '../page-layout/page-layout';
 import { useEffect } from 'react';
 import styles from './feed-page.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -29,26 +28,24 @@ function FeedPage(): JSX.Element {
   }, [selectedCategory, dispatch]);
 
   return (
-    <PageLayout>
-      <div className={styles.feed}>
-        <div className={styles.sidebarWrapper}>
-          <Sidebar
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
-        </div>
-        <div className={styles.videosWrapper}>
-          <h2 className={styles.videosTitle}>
-            {selectedCategory} <span style={{ color: '#f31503' }}>videos</span>
-          </h2>
-          {!suggestedItems || loadingStatus ? (
-            <LoadingScreen />
-          ) : (
-            <Videos items={suggestedItems.items} />
-          )}
-        </div>
+    <div className={styles.feed}>
+      <div className={styles.sidebarWrapper}>
+        <Sidebar
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </div>
-    </PageLayout>
+      <div className={styles.videosWrapper}>
+        <h2 className={styles.videosTitle}>
+          {selectedCategory} <span style={{ color: '#f31503' }}>videos</span>
+        </h2>
+        {!suggestedItems || loadingStatus ? (
+          <LoadingScreen />
+        ) : (
+          <Videos items={suggestedItems.items} />
+        )}
+      </div>
+    </div>
   );
 }
 
